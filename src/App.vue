@@ -9,6 +9,7 @@ export default {
   name: 'App',
   props:{
     name:String
-  }
+  },
+
 }
 </script>
