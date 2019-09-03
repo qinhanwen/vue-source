@@ -10,20 +10,18 @@ new Vue({
   el: '#app',
   data: function () {
     return {
-      message: 'hello',
-      personInfo:{
-        name:'qinhanwen'
-      }
+      arr: [1, 2, 3, 4, 5],
     }
   },
   methods: {
-    changeMsg() {
-      this.message = 'Hello World!'
-      this.personInfo.name = 'qhw';
-    }
+    changeArr() {
+      console.log('change');
+      this.arr.push(6);
+    },
   },
-  template: `<div @click="changeMsg">
-  {{ message }}
-  {{personInfo.name}}
+  template: `<div>
+  <p v-for="item in arr" @click="changeArr">
+  {{item}}
+  </p>
   </div>`
 })
