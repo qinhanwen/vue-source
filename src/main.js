@@ -10,18 +10,16 @@ new Vue({
   el: '#app',
   data: function () {
     return {
-      arr: [1, 2, 3, 4, 5],
+      firstName: 'qin',
+      lastName: 'hanwen'
     }
   },
-  methods: {
-    changeArr() {
-      console.log('change');
-      this.arr.push(6);
-    },
+  computed: {
+    totalName: function () {
+      return this.firstName + this.lastName
+    }
   },
   template: `<div>
-  <p v-for="item in arr" @click="changeArr">
-  {{item}}
-  </p>
+  {{totalName}}
   </div>`
 })
