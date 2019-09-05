@@ -10,21 +10,15 @@ new Vue({
   el: '#app',
   data: function () {
     return {
-      firstName: 'hanwen',
-      totalName: '',
+      firstName: 'qinhanwen',
     }
-  },
-  watch: {
-    firstName: function (val,oVal) {
-      this.totalName = val + oVal;
-    },
   },
   methods:{
     changeFirstName(){
-      this.firstName = 'qin';
+      this.firstName = 'qhw';
     }
   },
   template: `<div @click="changeFirstName()">
-  my name is {{totalName}}
+  my name is {{firstName}}
   </div>`
 })
