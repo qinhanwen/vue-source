@@ -10,16 +10,21 @@ new Vue({
   el: '#app',
   data: function () {
     return {
-      firstName: 'qin',
-      lastName: 'hanwen'
+      firstName: 'hanwen',
+      totalName: '',
     }
   },
-  computed: {
-    totalName: function () {
-      return this.firstName + this.lastName
+  watch: {
+    firstName: function (val,oVal) {
+      this.totalName = val + oVal;
+    },
+  },
+  methods:{
+    changeFirstName(){
+      this.firstName = 'qin';
     }
   },
-  template: `<div>
-  {{totalName}}
+  template: `<div @click="changeFirstName()">
+  my name is {{totalName}}
   </div>`
 })
