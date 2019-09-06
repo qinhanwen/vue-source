@@ -9,26 +9,14 @@ new Vue({
   el: '#app',
   data: function () {
     return {
-      userList: [{
-          name: '1',
-          id: 1
-        },
-        {
-          name: '2',
-          id: 2
-        },
-      ],
+      message:"123"
     }
   },
   methods: {
-    changeUserList() {
-      this.userList.reverse().push({
-        name: '3',
-        id: 3
-      });
-    }
+
   },
-  template: `<ul @click="changeUserList()">
-    <li v-for="item in userList" :key="item.id">{{item.name}}</li>
-  </ul>`
+  template: `<div>
+    <input v-model="message" />
+    {{message}}
+  </div>`
 })
