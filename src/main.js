@@ -15,14 +15,20 @@ new Vue({
     },{
       name:"zenghua",
       id:2,
+    },{
+      name:"bao",
+      id:3,
+    },{
+      name:"guo",
+      id:4,
     }]
   },
   methods:{
     reverseUserList() {
-      this.userList.reverse();
+      this.userList.splice(1,1);
     },
   },
   template: `<ul @click="reverseUserList()"> 
-    <li v-for="item in userList" :key="item.id">{{item.name}}</li>
+    <li v-for="(item,index) in userList" :key="item.id">{{item.name}}{{index}}</li>
   </ul>`
 })
