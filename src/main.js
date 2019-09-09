@@ -8,18 +8,21 @@ Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
+  data:{
+    userList:[{
+      name:"qinhanwen",
+      id:1,
+    },{
+      name:"zenghua",
+      id:2,
+    }]
+  },
   methods:{
-    childEmitHandler() {
-      console.log('Child select!')
+    reverseUserList() {
+      this.userList.reverse();
     },
-    childEmitHandler1() {
-      console.log('Child select1!')
-    }
   },
-  components:{
-    App
-  },
-  template: `<div> 
-  <App @childEmitHandler="childEmitHandler();childEmitHandler1()" />
-  </div>`
+  template: `<ul @click="reverseUserList()"> 
+    <li v-for="item in userList" :key="item.id">{{item.name}}</li>
+  </ul>`
 })
