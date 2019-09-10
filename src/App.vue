@@ -1,18 +1,15 @@
 <template>
-  <button @click="clickHandler($event)">click me</button>
+  <div>
+    <slot name="content"></slot>
+  </div>
 </template>
 
 <script>
-  export default {
-    name: "App",
-    props: {
-      firstName: String
-    },
-    methods: {
-      clickHandler(e) {
-        console.log('child clicked');
-        this.$emit("childEmitHandler");
-      }
-    }
-  };
+export default {
+  name: "App",
+  props: {
+    firstName: String
+  },
+  methods: {}
+};
 </script>

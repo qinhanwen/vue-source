@@ -8,27 +8,14 @@ Vue.config.productionTip = false
 
 new Vue({
   el: '#app',
-  data:{
-    userList:[{
-      name:"qinhanwen",
-      id:1,
-    },{
-      name:"zenghua",
-      id:2,
-    },{
-      name:"bao",
-      id:3,
-    },{
-      name:"guo",
-      id:4,
-    }]
+  data: {
+    name: 'qinhanwen'
   },
-  methods:{
-    reverseUserList() {
-      this.userList.splice(1,1);
-    },
+  components: {
+    App
   },
-  template: `<ul @click="reverseUserList()"> 
-    <li v-for="(item,index) in userList" :key="item.id">{{item.name}}{{index}}</li>
-  </ul>`
+  methods: {
+
+  },
+  template: `<App><p slot="content">{{name}}</p></App>`
 })
