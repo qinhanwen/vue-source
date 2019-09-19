@@ -1,6 +1,6 @@
 <template>
   <div>
-    <slot name="content"></slot>
+   123
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: "App",
   props: {
-    firstName: String
+
   },
   methods: {}
 };
