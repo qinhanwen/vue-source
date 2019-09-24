@@ -2,21 +2,48 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
-Vue.config.productionTip = false
-Vue.component('async-example', function (resolve, reject) {
-  // 这个特殊的 require 语法告诉 webpack
-  // 自动将编译后的代码分割成不同的块，
-  // 这些块将通过 Ajax 请求自动下载。
-  setTimeout(() => require(['./App'], resolve), 2000)
-})
+var child1 = {
+  template: '<div><button @click="add">add</button><p>{{num}}</p></div>',
+  data() {
+    return {
+      num: 1
+    }
+  },
+  methods: {
+    add() {
+      this.num++
+    }
+  },
+}
+
+var child2 = {
+  template: '<div>child2</div>'
+}
 
 new Vue({
   el: '#app',
-  data: function () {
-    return {}
+  components: {
+    child1,
+    child2,
   },
-
-  template: `<div>
-      <async-example></async-example>
-  </div>`
+  data() {
+    return {
+      chooseTabs: 'child1',
+    }
+  },
+  methods: {
+    changeTabs(tab) {
+      this.chooseTabs = tab;
+    }
+  },
+  template: `
+  <div id="app">
+    <button @click="changeTabs('child1')">child1</button>
+    <button @click="changeTabs('child2')">child2</button>
+    <keep-alive>
+        <component :is="chooseTabs">
+        </component>
+    </keep-alive>
+  </div>
+  `
 })
