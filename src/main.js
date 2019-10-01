@@ -1,49 +1,18 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 
-var child1 = {
-  template: '<div><button @click="add">add</button><p>{{num}}</p></div>',
-  data() {
-    return {
-      num: 1
-    }
-  },
-  methods: {
-    add() {
-      this.num++
-    }
-  },
-}
-
-var child2 = {
-  template: '<div>child2</div>'
-}
-
+Vue.directive('qhw', function (el, binding, vnode) {
+  console.log(el, binding, vnode)
+  el.style = 'color:' + binding.value
+})
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
-  components: {
-    child1,
-    child2,
-  },
-  data() {
-    return {
-      chooseTabs: 'child1',
-    }
-  },
-  methods: {
-    changeTabs(tab) {
-      this.chooseTabs = tab;
-    }
+  data: {
+    color: 'red'
   },
   template: `
-  <div id="app">
-    <button @click="changeTabs('child1')">child1</button>
-    <button @click="changeTabs('child2')">child2</button>
-    <keep-alive>
-        <component :is="chooseTabs">
-        </component>
-    </keep-alive>
+  <div v-qhw="color">
+    123
   </div>
   `
 })
