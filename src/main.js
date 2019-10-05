@@ -1,18 +1,25 @@
 import Vue from 'vue'
+import store from './store/index'
 
-Vue.directive('qhw', function (el, binding, vnode) {
-  console.log(el, binding, vnode)
-  el.style = 'color:' + binding.value
-})
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
-  data: {
-    color: 'red'
+  computed: {
+    count(){
+      return store.state.count;
+    }
+  },
+  store,
+  methods: {
+    increment() {
+      // store.commit('increment')
+      console.log(this.$store.state.count);
+      console.log(this.$store.getters.getCount);
+      this.$store.dispatch('incrementAction');
+    }
   },
   template: `
-  <div v-qhw="color">
-    123
+  <div @click="increment()">
+    count:{{count}}
   </div>
   `
 })
