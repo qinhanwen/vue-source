@@ -1,25 +1,18 @@
 import Vue from 'vue'
-import store from './store/index'
-
+import App from './App';
 new Vue({
   el: '#app',
-  computed: {
-    count(){
-      return store.state.count;
-    }
+  data: function () {
+    return {}
   },
-  store,
-  methods: {
-    increment() {
-      // store.commit('increment')
-      console.log(this.$store.state.count);
-      console.log(this.$store.getters.getCount);
-      this.$store.dispatch('incrementAction');
-    }
+  components:{
+    App
   },
-  template: `
-  <div @click="increment()">
-    count:{{count}}
-  </div>
-  `
+  methods:{
+
+  },
+  template: `<div>
+  <App />
+  </div>`
 })
+
