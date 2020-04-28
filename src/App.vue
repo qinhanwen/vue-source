@@ -1,27 +1,23 @@
 <template>
-  <h1>123
-  </h1>
+  <div>
+    <h1>{{getCount}}</h1>
+    <button @click="incrementAction">increment</button>
+  </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from "vuex";
 export default {
-  name: 'App',
-  props:{
-    name:String
+  name: "App",
+  methods: {
+    ...mapActions("account", ["incrementAction"])
   },
-  mounted(){
-    console.log('child mount');
+  computed:{
+     ...mapGetters("account", ["getCount"])
   },
-  beforeMount(){
-    console.log('child beforemount')
+  props: {
+    name: String
   }
-}
+};
 </script>
-<style scoped>
-  h1{
-    color: red;
-  }
-  p{
-    color: blue;
-  }
-</style>
+<style scoped></style>
