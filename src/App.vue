@@ -1,19 +1,20 @@
 <template>
   <div>
-    <h1>{{getCount}}</h1>
+    <h1>{{count}}</h1>
     <button @click="incrementAction">increment</button>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "./utils/vuex";
+import {incrementAction} from './store/account/index';
 export default {
   name: "App",
   methods: {
-    ...mapActions("account", ["incrementAction"])
+    ...mapActions("account", [incrementAction])
   },
   computed:{
-     ...mapGetters("account", ["getCount"])
+     ...mapState("account", ["count"])
   },
   props: {
     name: String
